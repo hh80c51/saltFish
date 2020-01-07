@@ -18,7 +18,7 @@ target/
 .tern-project
 
 # idea ignore
-.idea/
+.idea/*
 *.ipr
 *.iml
 *.iws
