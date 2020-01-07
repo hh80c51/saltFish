@@ -42,3 +42,4 @@ startModule/
 
 # properties
 *.env_dev.properties
+out/
