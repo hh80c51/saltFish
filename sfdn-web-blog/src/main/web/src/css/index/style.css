@@ -309,17 +309,17 @@ span.x4:before,i.x4:before {
 /* HEADER
 /*-----------------------------------------------------------------------------------*/
 #home {
-    background-image: url(assets/images/hero-bg.jpg);
+    background-image: url(../../script/assets/images/hero-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #home.home-portfolio  {
-    background-image: url(assets/images/portfolio/hero-bg.jpg);
+    background-image: url(../../script/assets/images/portfolio/hero-bg.jpg);
 }
 
 .error404-bg {
-    background-image: url(assets/images/404-bg.jpg) !important;
+    background-image: url(../../script/assets/images/404-bg.jpg) !important;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -786,28 +786,28 @@ section.white-bg {
 }
 
 #promo-3 {
-    background-image: url(assets/images/section-bg-3.jpg);
+    background-image: url(../../script/assets/images/section-bg-3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #course-tabs li.summer-term {
-    background-image: url(assets/images/image-tab-bg-1.jpg);
+    background-image: url(../../script/assets/images/image-tab-bg-1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #course-tabs li.winter-term {
-    background-image: url(assets/images/image-tab-bg-2.jpeg);
+    background-image: url(../../script/assets/images/image-tab-bg-2.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #course-tabs li.online-learning {
-    background-image: url(assets/images/image-tab-bg-3.jpg);
+    background-image: url(../../script/assets/images/image-tab-bg-3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

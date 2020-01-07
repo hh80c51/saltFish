@@ -15,6 +15,7 @@
         <module>sfdn-service-sms</module>
         <module>sfdn-web-blog</module>
         <module>sfdn-web-admin</module>
+        <module>sfdn-service-test</module>
     </modules>
 
 

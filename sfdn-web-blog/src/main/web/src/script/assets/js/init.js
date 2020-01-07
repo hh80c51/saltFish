@@ -6,17 +6,17 @@ jQuery(document).ready(function() {
 
     /* HOME SLIDERS */
     $("#home.business-slider").backstretch(
-      [ "assets/images/business/business-slide-1.jpg", 
-        "assets/images/business/business-slide-2.jpg" ], 
+      [ "../src/script/assets/images/business/business-slide-1.jpg",
+        "../src/script/assets/images/business/business-slide-2.jpg" ],
       {duration: 6000, fade: 1200
-    });  
+    });
 
-    $("#home.fashion-slider").backstretch(["assets/images/fashion/fashion-slide-1.jpg", "assets/images/fashion/fashion-slide-2.jpg"], {
+    $("#home.fashion-slider").backstretch(["../src/script/assets/images/fashion/fashion-slide-1.jpg", "../src/script/assets/images/fashion/fashion-slide-2.jpg"], {
       duration: 6000,
       fade: 1200
-    });  
+    });
 
-    $("#home.backstretched").backstretch(["assets/images/hero-bg.jpg", "assets/images/blog-1.jpeg", "assets/images/blog-4.jpeg", ], {
+    $("#home.backstretched").backstretch(["../src/script/assets/images/hero-bg.jpg", "../src/script/assets/images/blog-1.jpeg", "../src/script/assets/images/blog-4.jpeg", ], {
       duration: 6000,
       fade: 1200
     });
@@ -28,7 +28,7 @@ jQuery(document).ready(function() {
       navigationText: [
       "<i class='pe-7s-angle-left'></i>",
       "<i class='pe-7s-angle-right'></i>"
-      ], 
+      ],
       autoPlay: 8000,
       loop: true
     });
@@ -46,7 +46,7 @@ jQuery(document).ready(function() {
       autoPlay: 8000,
       loop: true
     });
-    
+
   /* RESPONSIVE VIDEOS */
   jQuery(".frame-wrapper").fitVids();
 
@@ -112,11 +112,11 @@ jQuery(document).ready(function() {
 
   /* BACKSTRETCH LINKS */
   $("a[href*=#prev-slide]").on("click",function(event) {
-      event.preventDefault(); 
+      event.preventDefault();
       jQuery('#home.backstretched').data('backstretch').prev();
     });
   $("a[href*=#next-slide]").on("click",function(event) {
-      event.preventDefault(); 
+      event.preventDefault();
       jQuery('#home.backstretched').data('backstretch').prev();
   });
 
@@ -210,7 +210,7 @@ jQuery(document).ready(function() {
     $(this).next().slideToggle();
   });
 
-  /* POST FORMAT STUFF */  
+  /* POST FORMAT STUFF */
   $.fn.toggleText = function(t1, t2){
     if (this.text() == t1) this.text(t2);
     else                   this.text(t1);
@@ -229,7 +229,7 @@ jQuery(document).ready(function() {
   });
 
   $('#show-video').on('click', function(event){
-    event.preventDefault();  
+    event.preventDefault();
     $(this).toggleText('View Video', 'Close');
     $('#home').toggleClass('show-gallery');
     $('.section-title, .item-metas').fadeToggle();
@@ -238,7 +238,7 @@ jQuery(document).ready(function() {
     });
   });
 
- /* VERTICAL CENTERING */ 
+ /* VERTICAL CENTERING */
   $('.vertical-center-js').flexVerticalCenter({
     cssAttribute: 'padding-top'
   });
@@ -250,7 +250,7 @@ jQuery(document).ready(function() {
 jQuery(window).load(function(){
   "use strict";
 
-  /* YOUTUBE PLAYER */ 
+  /* YOUTUBE PLAYER */
   if ( $( '.player' ).length ) {
     jQuery(function(){
         jQuery(".player").mb_YTPlayer();
@@ -269,14 +269,14 @@ jQuery(window).load(function(){
     });
   }
 
-  /* MATCH HEIGHT */ 
+  /* MATCH HEIGHT */
   $('.match-height').matchHeight();
 
   $('.vertical-center-js').flexVerticalCenter({
     cssAttribute: 'padding-top'
   });
 
-  /* PANEL ENCHANCMENTS */ 
+  /* PANEL ENCHANCMENTS */
   function toggleIcon(e) {
     $(e.target)
         .prev('.panel-heading')
@@ -285,8 +285,8 @@ jQuery(window).load(function(){
   }
   $('.styled-accordion').on('hidden.bs.collapse', toggleIcon);
   $('.styled-accordion').on('shown.bs.collapse', toggleIcon);
-  
-  /* CONTACT PANEL */ 
+
+  /* CONTACT PANEL */
   $('a#open-map').click(function(e) {
     e.preventDefault();
     $('#map-holder').slideToggle();
@@ -297,14 +297,14 @@ jQuery(window).load(function(){
         latitude: 40.7566,
         longitude: -73.9863,
         icon: {
-          image: "assets/images/marker.png",
+          image: "../src/script/assets/images/marker.png",
           iconsize: [44, 44],
           iconanchor: [12, 46],
           infowindowanchor: [12, 0]
         }
       }],
       icon: {
-        image: "assets/images/marker.png",
+        image: "../src/script/assets/images/marker.png",
         iconsize: [26, 46],
         iconanchor: [12, 46],
         infowindowanchor: [12, 0]
