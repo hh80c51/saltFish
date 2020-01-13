@@ -16,6 +16,11 @@
         <module>sfdn-web-blog</module>
         <module>sfdn-web-admin</module>
         <module>sfdn-service-test</module>
+        <module>sfdn-user-api</module>
+        <module>sfdn-service-user/sfdn-user-api</module>
+        <module>sfdn-service-user/sfdn-user-service</module>
+        <module>sfdn-service-user/sfdn-user-dao</module>
+        <module>sfdn-service-user/sfdn-user-model</module>
     </modules>
 
 

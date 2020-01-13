@@ -6,17 +6,11 @@
         <artifactId>saltFish</artifactId>
         <groupId>org.example</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sfdn-service-user</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>sfdn-user-dao</artifactId>
 
-    <modules>
-        <module>sfdn-user-api</module>
-        <module>sfdn-user-dao</module>
-        <module>sfdn-user-model</module>
-        <module>sfdn-user-service</module>
-    </modules>
 
 </project>
