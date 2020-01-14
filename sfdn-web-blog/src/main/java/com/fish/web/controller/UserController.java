@@ -1,9 +1,15 @@
-package controller;
+package com.fish.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("user")
 public class UserController {
 
-    public String
+    @RequestMapping("userInfo")
+    public String findUserInfo(){
+        System.out.println("方法：findUserInfo");
+        return "blogDetail/blogSpring";
+    }
 }
