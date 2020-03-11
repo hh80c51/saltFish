@@ -1,4 +1,3 @@
-package bean;
 
 public class Price {
     public static final Price INSTANCE = new Price(12);
