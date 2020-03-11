@@ -9,7 +9,7 @@ public class UserController {
 
     @RequestMapping("userInfo")
     public String findUserInfo(){
-        System.out.println("after git方法：findUserInfo");
+        System.out.println("方法：findUserInfo");
         return "blogDetail/blogSpring";
     }
 }
