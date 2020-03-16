@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../bootstrap-3.3.7/docs/favicon.ico">
+
+    <title>考题分析</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../bootstrap-3.3.7/docs/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/detail/blog.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../bootstrap-3.3.7/docs/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="#">Home</a>
+          <a class="blog-nav-item" href="#">New features</a>
+          <a class="blog-nav-item" href="#">Press</a>
+          <a class="blog-nav-item" href="#">New hires</a>
+          <a class="blog-nav-item" href="#">About</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">Java基础</h1>
+        <p class="lead blog-description">收集常见的考点</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="blog-post">
+            <h2 class="blog-post-title">String的常见问题</h2>
+            <p class="blog-post-meta">March 16, 2020 by <a href="#">HeHang</a></p>
+
+            <p>String一般作为面试的开题，在于考察应试者基础是否扎实，是最简单最基础的题目。</p>
+            <hr>
+            <p>String包含以下几个重要方法。</p>
+            <blockquote>
+              <p>1.四个构造方法</p>
+              <p>2.equals()方法</p>
+              <p>3. compareTo()方法</p>
+            </blockquote>
+            <p>equals()可以接收一个Object类型的参数，而compareTo()只能接收一个String类型的参数；equals()返回值为Boolean，而 compareTo() 的返回值则为 int。</p>
+            <h2>考点分析</h2>
+            <p>String问题延伸，通常关联以下问题：</p>
+            <h3>1. == 和 equals 的区别</h3>
+            <p>== 对于基本数据类型来说，是用于比较 “值”是否相等的；而对于引用类型来说，是用于比较引用地址是否相同的。</p>
+            <p>Object 中的 equals() 方法其实就是 ==，而 String 重写了 equals() 方法把它修改成比较两个字符串的值是否相等。</p>
+            <h3>2.为什么 String 类型要用 final 修饰？</h3>
+            <p><li>第一个好处是高效。</li></p>
+            因为它能够缓存结果，当你在传参时不需要考虑谁会修改它的值；如果是可变类的话，则有可能需要重新拷贝出来一个新值进行传参，这样在性能上就会有一定的损失。
+            <p><li>第二个好处是安全。</li></p>
+            <pre>String s1 = "java";<br>String s2 = "java";</pre>
+            <p>试想一下如果 String 是可变的，那当 s1 的值修改之后，s2 的值也跟着改变了，这样就和我们预期的结果不相符了，因此也就没有办法实现字符串常量池的功能了。</p>
+            <h3>3. String 和 StringBuilder、StringBuffer 的区别</h3>
+            <p>因为String类型是不可变的，所以在字符串拼接的时候如果使用String的话性能会很低，因此我们就需要使用另一个数据类型StringBuffer，它提供了append和insert方法可用于字符串的拼接，它使用 synchronized 来保证线程安全。</p>
+            <p>因为它使用了synchronized来保证线程安全，所以性能不是很高，于是在JDK1.5就有了StringBuilder，它同样提供了append和insert的拼接方法，但它没有使用 synchronized 来修饰，因此在性能上要优于 StringBuffer，所以在非并发操作的环境下可使用 StringBuilder 来进行字符串拼接。</p>
+            <h3>4.String 类型在 JVM（Java 虚拟机）中是如何存储的？编译器对 String 做了哪些优化？</h3>
+            <p>在JDK1.8中，变量s1会先去字符串常量池中找字符串“Java”，如果有相同的字符则直接返回常量句柄，如果没有此字符串则会先在常量池中创建此字符串，然后再返回常量句柄；而变量s2是直接在堆上创建一个变量，只有调用 intern 方法才会把此字符串保存到常量池中，如下代码所示：</p>
+            <pre>String s1=new String("Java");<br>String s2=s1.intern();<br>String s3="Java";<br>System.out.println(s1 == s2); // false<br>System.out.println(s2 == s3); // true</pre>
+            <p>它们在 JVM 存储的位置，如下图所示：</p>
+            <img src="../../image/string.png" width="300" height="200" />
+          </div><!-- /.blog-post -->
+
+          <nav>
+            <ul class="pager">
+              <li><a href="#">Previous</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </nav>
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+              <li><a href="#">January 2014</a></li>
+              <li><a href="#">December 2013</a></li>
+              <li><a href="#">November 2013</a></li>
+              <li><a href="#">October 2013</a></li>
+              <li><a href="#">September 2013</a></li>
+              <li><a href="#">August 2013</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2013</a></li>
+              <li><a href="#">May 2013</a></li>
+              <li><a href="#">April 2013</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../bootstrap-3.3.7/docs/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
