@@ -20,6 +20,7 @@
 
     <!-- 属性声明 -->
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-web.version>5.1.5.RELEASE</spring-web.version>
         <spring-orm.version>5.0.8.RELEASE</spring-orm.version>
         <spring-webmvc.version>5.1.5.RELEASE</spring-webmvc.version>
