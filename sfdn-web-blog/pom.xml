@@ -21,14 +21,6 @@
                 <configuration>
                     <warName>blog</warName>
                     <webResources>
-                        <!--保持该顺序，否则启动时压缩的文件会被替换为原始js文件-->
-                        <resource>
-                            <directory>target/generated-sources</directory>
-                            <includes>
-                                <include>**/*.js</include>
-                            </includes>
-                            <filtering>true</filtering>
-                        </resource>
                         <resource>
                             <directory>src/main/web</directory>
                             <includes>
