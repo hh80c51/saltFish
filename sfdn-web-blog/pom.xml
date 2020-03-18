@@ -19,7 +19,6 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <version>4.0</version>
                     <webXml>src\main\web\WEB-INF\web.xml</webXml>
                 </configuration>
             </plugin>
