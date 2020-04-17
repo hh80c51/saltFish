@@ -4,6 +4,8 @@ import bean.springbean.MyTestBean;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
 import static org.junit.Assert.assertEquals;
@@ -12,8 +14,9 @@ import static org.junit.Assert.assertEquals;
 public class BeanFactoryTest {
     @Test
     public void testSimpleLoad(){
-//        BeanFactory bf = new XmlBeanFactory(new ClassPathResource("spring/beanFactoryTest.xml"));
-//        MyTestBean bean = (MyTestBean) bf.getBean("myTestBean");
-//        assertEquals("testStr", bean.getTestStr());
+        BeanFactory bf = new XmlBeanFactory(new ClassPathResource("spring/beanFactoryTest.xml"));
+        ApplicationContext bf1 = new ClassPathXmlApplicationContext("spring/beanFactoryTest.xml");
+        MyTestBean bean = (MyTestBean) bf.getBean("myTestBean");
+        assertEquals("testStr", bean.getTestStr());
     }
 }
