@@ -115,6 +115,12 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectjweaver.version}</version>
         </dependency>
+        <!-- JmsTmplate-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>org.springframework.jms</artifactId>
+            <version>3.2.1.RELEASE</version>
+        </dependency>
         <!--ActiveMQ-->
         <dependency>
             <groupId>org.apache.activemq</groupId>
