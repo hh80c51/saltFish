@@ -1,6 +1,6 @@
 package dao;
 
-import bean.User;
+import model.User;
 
 /**
  * @ClassName UserMapper
@@ -9,7 +9,7 @@ import bean.User;
  * @Date 2020/4/15
  * @Version V1.0
  **/
-public interface UserMapper {
+public interface UserDao {
     void insertUser(User user);
     User getUser(Integer id);
 }

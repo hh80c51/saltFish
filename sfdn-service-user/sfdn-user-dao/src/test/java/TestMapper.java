@@ -1,5 +1,5 @@
-import bean.User;
-import dao.UserMapper;
+import dao.UserDao;
+import model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
@@ -22,9 +22,9 @@ public class TestMapper {
     public void testAdd() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            User user = new User("tom", new Integer(5));
-            userMapper.insertUser(user);
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
+            User user = new User(new Integer(5), "tom");
+            userDao.insertUser(user);
             sqlSession.commit();//这里一定要提交，不然数据进不去数据库
         } finally {
             sqlSession.close();
@@ -35,8 +35,8 @@ public class TestMapper {
     public void getUser() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            userMapper.getUser(1);
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
+            userDao.getUser(1);
             sqlSession.commit();//这里一定要提交，不然数据进不去数据库
         } finally {
             sqlSession.close();

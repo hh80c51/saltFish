@@ -11,6 +11,15 @@ public class User {
         this.tel = tel;
     }
 
+    public User() {
+
+    }
+
+    public User(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }
