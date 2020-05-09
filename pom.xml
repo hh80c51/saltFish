@@ -39,7 +39,7 @@
         <jcraft.version>0.1.50</jcraft.version>
         <poi.version>3.16</poi.version>
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
-        <jackson.version>2.9.8</jackson.version>
+        <jackson.version>2.11.0</jackson.version>
         <powermock.version>1.6.5</powermock.version>
     </properties>
 
