@@ -43,6 +43,15 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>ratelimiter</filter-name>
+        <filter-class>RateLimiterFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ratelimiter</filter-name>
+        <servlet-name>springmvc</servlet-name>
+    </filter-mapping>
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
