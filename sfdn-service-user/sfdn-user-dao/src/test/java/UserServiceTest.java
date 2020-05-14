@@ -1,4 +1,4 @@
-import dao.UserMapper;
+import dao.UserDao;
 import org.apache.ibatis.builder.xml.XMLConfigBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class UserServiceTest {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("resource/spring-config.xml");
-        UserMapper userDao = (UserMapper) context.getBean("userMapper");
+        UserDao userDao = (UserDao) context.getBean("userDao");
         System.out.println(userDao.getUser(1));
     }
 }
