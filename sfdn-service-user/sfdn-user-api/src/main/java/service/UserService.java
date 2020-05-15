@@ -1,7 +1,14 @@
 package service;
 
-import model.User;
+import com.fish.user.model.User;
 
+/**
+ * @author hh
+ */
 public interface UserService {
-    User getUserById();
+    /**
+     * 数据业务层getBean
+     * @return
+     */
+    User getUser();
 }

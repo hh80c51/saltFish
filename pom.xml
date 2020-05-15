@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.fish</groupId>
     <artifactId>saltFish</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -21,9 +21,12 @@
     <!-- 属性声明 -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-web.version>5.1.5.RELEASE</spring-web.version>
-        <spring-orm.version>5.0.8.RELEASE</spring-orm.version>
-        <spring-webmvc.version>5.1.5.RELEASE</spring-webmvc.version>
+        <spring-context.version>5.2.6.RELEASE</spring-context.version>
+        <spring-web.version>5.2.6.RELEASE</spring-web.version>
+        <spring-orm.version>5.2.6.RELEASE</spring-orm.version>
+        <spring-webmvc.version>5.2.6.RELEASE</spring-webmvc.version>
+        <spring-test.version>5.2.6.RELEASE</spring-test.version>
+        <spring-context-support.version>5.2.6.RELEASE</spring-context-support.version>
         <java.servlet-api.version>4.0.1</java.servlet-api.version>
         <commons-io.version>2.6</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
@@ -41,9 +44,27 @@
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
         <jackson.version>2.9.8</jackson.version>
         <powermock.version>1.6.5</powermock.version>
+        <dubbo.version>2.5.5-SNAPSHOT</dubbo.version>
     </properties>
 
     <dependencies>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring-context.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring-context-support.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring-test.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -51,13 +72,13 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring-orm.version}</version>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring-webmvc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring-webmvc.version}</version>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring-orm.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -142,12 +163,6 @@
             <artifactId>artemis-jms-client</artifactId>
             <version>2.3.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.25</version>
-            <scope>compile</scope>
-        </dependency>
         <!-- 注意spring要在activemq上面 -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -181,7 +196,7 @@
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
+        <!-- Mock测试 -->
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>
@@ -201,6 +216,55 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- mybatis plus 依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-support</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        <!-- 数据库连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.2.1</version>
+        </dependency>
+
+        <!-- freemaker依赖 -->
+        <dependency>
+            <groupId>freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.8</version>
+        </dependency>
+
+        <!-- dubbo依赖 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- 子服务依赖 -->
+        <dependency>
+            <groupId>com.fish</groupId>
+            <artifactId>sfdn-service-user</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

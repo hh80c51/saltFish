@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>saltFish</artifactId>
-        <groupId>org.example</groupId>
+        <groupId>com.fish</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
@@ -13,7 +13,7 @@
     <artifactId>sfdn-user-api</artifactId>
     <dependencies>
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>com.fish</groupId>
             <artifactId>sfdn-user-model</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>

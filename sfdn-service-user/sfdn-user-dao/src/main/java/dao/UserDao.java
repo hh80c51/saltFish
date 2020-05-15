@@ -1,6 +1,7 @@
 package dao;
 
-import model.User;
+import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.fish.user.model.User;
 
 /**
  * @ClassName UserMapper
@@ -9,7 +10,4 @@ import model.User;
  * @Date 2020/4/15
  * @Version V1.0
  **/
-public interface UserDao {
-    void insertUser(User user);
-    User getUser(Integer id);
-}
+public interface UserDao extends BaseMapper<User>{}

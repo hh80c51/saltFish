@@ -8,7 +8,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 /**
  * @ClassName PowerMockTest
- * @Description: TODO
+ * @Description: PowerMock测试
  * @Author hh
  * @Date 2020/5/9
  * @Version V1.0

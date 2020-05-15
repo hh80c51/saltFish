@@ -1,7 +1,15 @@
-package model;
+package com.fish.user.model;
 
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+
+@TableName(value = "tbl_user")
 public class User {
+    @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
+    @TableField(value = "name")
     private String name;
     private String tel;
 
