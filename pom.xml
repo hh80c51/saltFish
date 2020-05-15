@@ -163,6 +163,11 @@
             <artifactId>artemis-jms-client</artifactId>
             <version>2.3.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
         <!-- 注意spring要在activemq上面 -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -197,6 +202,12 @@
             <version>${jackson.version}</version>
         </dependency>
         <!-- Mock测试 -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.1-jre</version>
+        </dependency>
+
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>

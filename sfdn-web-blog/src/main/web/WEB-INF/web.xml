@@ -3,13 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <context-param>
-        <param-name/>
-        <param-value/>
-    </context-param>
+
 
     <servlet>
-        <servlet-name>springmvc</servlet-name>
+        <servlet-name>springmvc-blog</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -17,6 +14,10 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <context-param>
+        <param-name>springmvc-blog</param-name>
+        <param-value>sdfn-web-blog</param-value>
+    </context-param>
 
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
@@ -24,7 +25,7 @@
 
     <!--为DispatcherServlet建树映射 -->
     <servlet-mapping>
-        <servlet-name>springmvc</servlet-name>
+        <servlet-name>springmvc-blog</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
@@ -45,6 +46,15 @@
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>ratelimiter</filter-name>
+        <filter-class>com.fish.web.filter.RateLimiterFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ratelimiter</filter-name>
+        <servlet-name>springmvc</servlet-name>
     </filter-mapping>
 
     <welcome-file-list>
