@@ -44,7 +44,7 @@
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
         <jackson.version>2.9.8</jackson.version>
         <powermock.version>1.6.5</powermock.version>
-        <dubbo.version>2.5.5-SNAPSHOT</dubbo.version>
+        <dubbo.version>2.5.5</dubbo.version>
     </properties>
 
     <dependencies>
@@ -139,8 +139,8 @@
         <!-- JmsTmplate-->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.jms</artifactId>
-            <version>3.2.1.RELEASE</version>
+            <artifactId>spring-jms</artifactId>
+            <version>4.2.4.RELEASE</version>
         </dependency>
         <!--ActiveMQ-->
         <dependency>
@@ -269,14 +269,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <!-- 子服务依赖 -->
-        <dependency>
-            <groupId>com.fish</groupId>
-            <artifactId>sfdn-service-user</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
-
 
 </project>

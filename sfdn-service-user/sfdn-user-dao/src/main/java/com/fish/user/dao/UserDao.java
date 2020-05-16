@@ -1,7 +1,7 @@
-package dao;
+package com.fish.user.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.fish.user.model.User;
+import com.fish.user.user.model.User;
 
 /**
  * @ClassName UserMapper

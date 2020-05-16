@@ -50,7 +50,7 @@
 
     <filter>
         <filter-name>ratelimiter</filter-name>
-        <filter-class>com.fish.web.filter.RateLimiterFilter</filter-class>
+        <filter-class>com.fish.user.web.filter.RateLimiterFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>ratelimiter</filter-name>

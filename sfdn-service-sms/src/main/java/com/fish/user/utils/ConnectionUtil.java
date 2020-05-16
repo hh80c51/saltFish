@@ -1,4 +1,4 @@
-package utils;
+package com.fish.user.utils;
 
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;

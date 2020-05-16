@@ -1,5 +1,5 @@
 import dao.UserDao;
-import com.fish.user.model.User;
+import com.fish.user.user.model.User;
 import org.easymock.EasyMock;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
