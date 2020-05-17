@@ -1,6 +1,6 @@
-package com.fish.user.user.service.impl;
+package com.fish.user.service.impl;
 
-import com.fish.user.user.model.User;
+import com.fish.user.model.User;
 import com.fish.user.service.UserService;
 
 /**

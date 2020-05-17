@@ -50,11 +50,11 @@
 
     <filter>
         <filter-name>ratelimiter</filter-name>
-        <filter-class>com.fish.user.web.filter.RateLimiterFilter</filter-class>
+        <filter-class>com.fish.blog.filter.RateLimiterFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>ratelimiter</filter-name>
-        <servlet-name>springmvc</servlet-name>
+        <servlet-name>springmvc-blog</servlet-name>
     </filter-mapping>
 
     <welcome-file-list>

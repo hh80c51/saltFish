@@ -1,4 +1,4 @@
-package com.fish.user.web.support;
+package com.fish.blog.support;
 import java.util.LinkedHashMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

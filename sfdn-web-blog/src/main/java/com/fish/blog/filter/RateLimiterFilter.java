@@ -1,4 +1,4 @@
-package com.fish.user.web.filter;
+package com.fish.blog.filter;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

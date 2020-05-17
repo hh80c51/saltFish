@@ -1,5 +1,5 @@
 import com.fish.user.dao.UserDao;
-import com.fish.user.user.model.User;
+import com.fish.user.model.User;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
