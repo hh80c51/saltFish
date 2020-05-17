@@ -10,5 +10,5 @@ public interface UserService {
      * 数据业务层getBean
      * @return
      */
-    User getUser();
+    User getUser(int id);
 }

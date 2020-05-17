@@ -56,7 +56,7 @@
     </bean>
 
     <!--配置freeMarker的模板路径 -->
-    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+<!--    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/freemarker/"/>
         <property name="freemarkerVariables">
             <map>
@@ -78,7 +78,7 @@
                 <prop key="url_escaping_charset">UTF-8</prop>
             </props>
         </property>
-    </bean>
+    </bean>-->
     <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
     <!--配置JSP视图解析器 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -98,6 +98,6 @@
     </bean>
 
     <!--开启权限控制-->
-    <auth:enableControl url="/**/*.do" defalutLevel="DISCRIMINATE_LOGIN" workInConsole="false"/>
+    <!--<auth:enableControl url="/**/*.do" defalutLevel="DISCRIMINATE_LOGIN" workInConsole="false"/>-->
 
 </beans>

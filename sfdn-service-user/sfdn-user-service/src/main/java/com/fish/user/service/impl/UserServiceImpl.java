@@ -1,7 +1,9 @@
 package com.fish.user.service.impl;
 
+import com.fish.user.dao.UserDao;
 import com.fish.user.model.User;
 import com.fish.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @ClassName UserServiceImpl
@@ -11,14 +13,17 @@ import com.fish.user.service.UserService;
  * @Version V1.0
  **/
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserDao userDao;
     /**
      * 数据业务层getBean
      *
      * @return
      */
     @Override
-    public User getUser() {
+    public User getUser(int id) {
         //业务层操作
-        return null;
+        return userDao.selectById(id);
     }
 }
