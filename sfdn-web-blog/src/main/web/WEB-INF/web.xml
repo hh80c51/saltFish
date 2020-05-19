@@ -13,19 +13,31 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
     <context-param>
         <param-name>springmvc-blog</param-name>
         <param-value>sdfn-web-blog</param-value>
     </context-param>
 
+    <!-- Spring ApplicationContext配置文件的路径,可使用通配符,多个路径用,号分隔.此参数用于后面的Spring Context Loader -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:spring/*.xml
+        </param-value>
+    </context-param>
     <listener>
-        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- Spring 刷新Introspector防止内存泄露 -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
     </listener>
 
     <!--为DispatcherServlet建树映射 -->
     <servlet-mapping>
         <servlet-name>springmvc-blog</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
     <!--配置请求编码拦截器-->
@@ -41,11 +53,19 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
-
+    <!-- 浏览器不支持put,delete等method,由该filter将_method=delete转换为标准的http delete方法 -->
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
     <filter-mapping>
-        <filter-name>encodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <servlet-name>springmvc-blog</servlet-name>
     </filter-mapping>
+
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
 
     <filter>
         <filter-name>ratelimiter</filter-name>

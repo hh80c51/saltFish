@@ -16,8 +16,8 @@ public class UserController {
     @RequestMapping("userInfo")
     public String findUserInfo(){
         System.out.println("方法：findUserInfo");
-        User user = userService.getUser(1);
-        System.out.println(user.getName());
-        return "blogDetail/blogSpring";
+//        User user = userService.getUser(1);
+//        System.out.println(user.getName());
+        return "/test";
     }
 }
