@@ -1,4 +1,4 @@
-import dao.UserDao;
+import com.fish.user.dao.UserDao;
 import com.fish.user.model.User;
 import org.easymock.EasyMock;
 import org.junit.Test;

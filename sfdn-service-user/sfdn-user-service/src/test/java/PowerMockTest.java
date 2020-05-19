@@ -1,5 +1,4 @@
-
-import dao.UserDao;
+import com.fish.user.dao.UserDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.PowerMockUtils;
