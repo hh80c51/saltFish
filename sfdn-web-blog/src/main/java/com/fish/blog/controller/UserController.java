@@ -18,6 +18,6 @@ public class UserController {
         System.out.println("方法：findUserInfo");
 //        User user = userService.getUser(1);
 //        System.out.println(user.getName());
-        return "/test";
+        return "/user";
     }
 }

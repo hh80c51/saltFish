@@ -17,7 +17,8 @@ public class RateLimiterFilter implements Filter {
 
     @Override
     public void init(FilterConfig config) throws ServletException {
-        limiter = RateLimiter.create(100); //100 request per second
+        limiter = RateLimiter.create(1); //100 request per second
+        logger.info("初始化请求数量");
     }
 
     @Override
@@ -37,7 +38,7 @@ public class RateLimiterFilter implements Filter {
             chain.doFilter(request, response);
         } else {
             logger.info("system limitation reached!");
-            req.getRequestDispatcher("/WEB-INF/jsp/error/429.jsp").forward(req,res);
+            req.getRequestDispatcher("/WEB-INF/page/error.jsp").forward(req,res);
         }
     }
 }
