@@ -16,12 +16,10 @@
     <context:component-scan base-package="com.fish.user.support.security"/>
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
-    <!--导入dubbo模块-->
-    <import resource="classpath:spring/applicationContext-dubbo.xml"/>
     <!-- 扫描包 -->
     <context:component-scan base-package="com.fish.blog.*"/>
     <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
-    <dubbo:annotation package="com.fish.blog.controller,com.fish.user.support.security"/>
+<!--    <dubbo:annotation package="com.fish.blog.controller,com.fish.user.support.security"/>-->
     <!-- 读取配置文件参数 -->
     <context:property-placeholder location="classpath*:*.properties" ignore-unresolvable="true" order="1"
                                   file-encoding="UTF-8"/>
