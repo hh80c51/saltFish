@@ -16,25 +16,6 @@
     </properties>
 
     <dependencies>
-        <!--dubbo依赖-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>2.6.1</version>
-        </dependency>
-        <!--zookeeper-->
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.4.9</version>
-            <type>pom</type>
-        </dependency>
-        <!--zkClient-->
-        <dependency>
-            <groupId>com.github.sgroschupf</groupId>
-            <artifactId>zkclient</artifactId>
-            <version>0.1</version>
-        </dependency>
         <dependency>
             <groupId>com.fish</groupId>
             <artifactId>sfdn-user-api</artifactId>
