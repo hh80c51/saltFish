@@ -16,6 +16,7 @@
         <module>sfdn-web-blog</module>
         <module>sfdn-web-admin</module>
         <module>sfdn-service-test</module>
+        <module>sfdn-service-start</module>
     </modules>
 
     <!-- 属性声明 -->
@@ -90,6 +91,11 @@
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -171,7 +177,7 @@
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <artifactId>slf4j-simple</artifactId>
             <version>1.7.25</version>
         </dependency>
         <!-- 注意spring要在activemq上面 -->
@@ -282,5 +288,20 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <!-- 执行mvn命令的时候，会提醒：Downloading: http://repo.maven.apache.org/maven2/ -->
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>alimaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>
