@@ -14,7 +14,7 @@
     <mvc:annotation-driven/>
 
     <!-- 导入dubbo模块 -->
-    <import resource="classpath:spring/consumer.xml" />
+    <import resource="classpath*:spring/consumer.xml" />
     <!-- 添加aop支持 -->
     <context:component-scan base-package="com.fish.user.support.security"/>
 

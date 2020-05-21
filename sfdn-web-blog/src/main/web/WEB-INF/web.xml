@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-
     <servlet>
         <servlet-name>springmvc-blog</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -26,9 +25,11 @@
             classpath:spring/*.xml
         </param-value>
     </context-param>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
     <!-- Spring 刷新Introspector防止内存泄露 -->
     <listener>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
@@ -67,7 +68,6 @@
         <filter-name>HiddenHttpMethodFilter</filter-name>
         <servlet-name>springmvc-blog</servlet-name>
     </filter-mapping>
-
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
@@ -84,5 +84,4 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
-
 </web-app>
