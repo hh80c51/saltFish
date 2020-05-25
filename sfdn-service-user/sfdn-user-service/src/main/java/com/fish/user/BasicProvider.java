@@ -25,7 +25,7 @@ public class BasicProvider {
 
     public static void main(String[] args) throws Exception {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "classpath:spring/provider.xml");
+                "classpath:spring/spring-config.xml", "classpath:spring/dubbo-provider-user.xml");
         context.start();
         synchronized (Thread.currentThread()) {
             Thread.currentThread().wait();

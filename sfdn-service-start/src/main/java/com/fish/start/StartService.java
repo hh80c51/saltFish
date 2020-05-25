@@ -28,7 +28,7 @@ public class StartService {
      */
     public static void start() throws Exception{
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "classpath:spring/applicationContext-ide.xml");
+                "classpath:spring/spring-config.xml");
         context.start();
         synchronized (Thread.currentThread()) {
             Thread.currentThread().wait();

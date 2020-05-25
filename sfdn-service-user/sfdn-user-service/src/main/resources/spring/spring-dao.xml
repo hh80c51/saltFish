@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jee="http://www.springframework.org/schema/jee"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-
-    <!-- 配置整合mybatis-plus过程 -->
-    <!-- 1、配置数据库相关参数properties的属性：${url} -->
-    <context:property-placeholder location="classpath:config/jdbc.properties" />
-    <!-- 2、配置数据库连接池 -->
-    <!-- druid -->
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 1.数据源 -->
+    <context:property-placeholder location="classpath:env/jdbc.properties"/>
     <bean id="defaultDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、username、password -->
         <property name="url" value="${jdbc.url}" />
@@ -59,16 +46,45 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
-    <!-- mybatis的sqlsessionFactorybean：org.mybatis.spring.SqlSessionFactoryBean-->
-    <!-- 3、配置mybatis-plus的sqlSessionFactory -->
-    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="classpath:resource/mybatis-config.xml"/>
-        <property name="typeAliasesPackage" value="com.zhu.mybatisplus.entity"/>
-    </bean>
-    <!-- 4、DAO接口所在包名，Spring会自动查找其下的类 -->
+    <!-- 2.配置mybatis 扫描mapper接口的路径 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="dao" />
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.fish.user.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
+    </bean>
+
+    <!-- 3.MP 提供的 MybatisSqlSessionFactoryBean -->
+    <bean id="sqlSessionFactoryBean"
+          class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
+        <!-- 数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- mybatis 全局配置文件 -->
+        <property name="configLocation" value="classpath:spring/mybatis-config.xml"/>
+        <!-- 别名处理 -->
+        <property name="typeAliasesPackage" value="com.fish.user.model"/>
+        <!-- 注入全局MP策略配置 -->
+        <property name="globalConfig" ref="globalConfiguration"/>
+        <!-- 插件注册 -->
+        <property name="plugins">
+            <list>
+                <!-- 注册分页插件 -->
+                <bean class="com.baomidou.mybatisplus.plugins.PaginationInterceptor" />
+                <!-- 注入 SQL 性能分析插件，建议在开发环境中使用，可以在控制台查看 SQL 执行日志 -->
+                <bean class="com.baomidou.mybatisplus.plugins.PerformanceInterceptor">
+                    <property name="maxTime" value="1000" />
+                    <!--SQL 是否格式化 默认false-->
+                    <property name="format" value="true" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 4.定义 MybatisPlus 的全局策略配置-->
+    <bean id ="globalConfiguration" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
+        <!-- 在 2.3 版本以后，dbColumnUnderline 默认值是 true -->
+        <property name="dbColumnUnderline" value="true"></property>
+        <!-- 全局的主键策略 -->
+        <property name="idType" value="0"></property>
+        <!-- 全局的表前缀策略配置 -->
+        <property name="tablePrefix" value="tbl_"></property>
     </bean>
 </beans>

@@ -17,7 +17,7 @@ import java.io.Reader;
 public class MyBatisUtil {
     private final static SqlSessionFactory sqlSessionFactory;
     static {
-        String resource = "resource/mybatis-config.xml";
+        String resource = "spring/mybatis-config.xml";
         Reader reader = null;
         try {
             reader = Resources.getResourceAsReader(resource);

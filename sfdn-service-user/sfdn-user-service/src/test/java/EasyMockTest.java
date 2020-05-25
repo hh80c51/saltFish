@@ -15,7 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class EasyMockTest {
 
     private ApplicationContext context =
-            new ClassPathXmlApplicationContext("classpath:resource/applicationContext.xml");
+            new ClassPathXmlApplicationContext("classpath:spring/spring-dao.xml");
 
     private UserDao userDao =
             context.getBean("userDao", UserDao.class);
