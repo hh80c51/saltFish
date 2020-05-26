@@ -1,5 +1,6 @@
 package com.fish.user.service;
 
+import com.fish.user.model.ResponseEntity;
 import com.fish.user.model.User;
 
 /**
@@ -11,4 +12,6 @@ public interface UserService {
      * @return
      */
     User getUser(int id);
+
+    ResponseEntity isExist(User user);
 }

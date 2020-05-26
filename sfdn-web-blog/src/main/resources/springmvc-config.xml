@@ -24,7 +24,7 @@
     <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
     <dubbo:annotation package="com.fish.blog.controller"/>
     <!-- 读取配置文件参数 -->
-    <context:property-placeholder location="classpath*:*.properties" ignore-unresolvable="true" order="1"
+    <context:property-placeholder location="classpath*:*.properties,*/*.properties" ignore-unresolvable="true" order="1"
                                   file-encoding="UTF-8"/>
 
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
@@ -84,8 +84,8 @@
     <!--配置JSP视图解析器 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/page/"/>
-        <property name="suffix" value=".jsp"/>
+        <property name="prefix" value="/page/"/>
+        <property name="suffix" value=".html"/>
         <property name="order" value="1"/>
     </bean>
     <!-- 在JSP和Freemarker的配置项中都有一个order property，上面例子是把freemarker的order设置为0，jsp为1。 意思是找view时，先找ftl文件，再找jsp文件做为视图。 -->

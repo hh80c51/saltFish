@@ -14,6 +14,7 @@ public class User implements Serializable {
     @TableField(value = "name")
     private String name;
     private String tel;
+    private String password;
 
     public User(Integer id, String name, String tel) {
         this.id = id;
@@ -52,6 +53,14 @@ public class User implements Serializable {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
