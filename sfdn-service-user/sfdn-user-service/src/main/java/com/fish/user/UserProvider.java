@@ -21,7 +21,7 @@ package com.fish.user;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class BasicProvider {
+public class UserProvider {
 
     public static void main(String[] args) throws Exception {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
