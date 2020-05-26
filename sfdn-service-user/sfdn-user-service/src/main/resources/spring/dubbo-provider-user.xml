@@ -14,10 +14,6 @@
 
     <dubbo:annotation package="com.fish.user.service.UserService" />
 
-    <dubbo:service interface="com.fish.user.service.UserService" ref="userService"/>
-
-    <bean id="userService" class="com.fish.user.service.impl.UserServiceImpl"/>
-
     <!--<dubbo:monitor protocol="registry"/>-->
 
 </beans>
