@@ -18,9 +18,21 @@ public class UserController {
 
     @RequestMapping("userInfo")
     public String findUserInfo(){
-        System.out.println("方法：findUserInfo");
+        logger.info("方法：findUserInfo");
         User user = userService.getUser(1);
-        System.out.println(user.getName());
+        logger.info(user.getName());
         return "/user";
+    }
+
+    /**
+     * @MethodName: login
+     * @Description: 登录
+     * @Param: [user]
+     * @Return: java.lang.String
+     * @Author: hh
+     * @Date: 2020/5/26
+    **/
+    public String login(User user){
+        return "";
     }
 }
