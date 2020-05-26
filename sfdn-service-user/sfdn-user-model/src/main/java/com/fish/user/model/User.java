@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
+import java.io.Serializable;
+
 @TableName(value = "tbl_user")
-public class User {
+public class User implements Serializable {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
     @TableField(value = "name")
