@@ -12,7 +12,7 @@
     <!-- use dubbo protocol to export service on port 20880 -->
     <dubbo:protocol name="dubbo" port="20890"/>
 
-    <dubbo:annotation package="com.fish.user.service.UserService" />
+    <dubbo:annotation package="com.fish.user.service" />
 
     <!--<dubbo:monitor protocol="registry"/>-->
 
