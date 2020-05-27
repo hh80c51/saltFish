@@ -1,12 +1,11 @@
 package com.fish.user.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.fish.core.commons.Constants;
+import com.fish.core.model.ResponseEntity;
 import com.fish.user.dao.UserDao;
-import com.fish.user.model.ResponseEntity;
 import com.fish.user.model.User;
-import com.fish.user.model.commons.Constants;
 import com.fish.user.service.UserService;
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;

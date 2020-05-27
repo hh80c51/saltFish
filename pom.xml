@@ -17,6 +17,7 @@
         <module>sfdn-web-admin</module>
         <module>sfdn-service-test</module>
         <module>sfdn-service-start</module>
+        <module>sfdn-service-core</module>
     </modules>
 
     <!-- 属性声明 -->

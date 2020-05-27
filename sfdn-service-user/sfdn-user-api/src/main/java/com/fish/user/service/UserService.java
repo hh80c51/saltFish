@@ -1,6 +1,6 @@
 package com.fish.user.service;
 
-import com.fish.user.model.ResponseEntity;
+import com.fish.core.model.ResponseEntity;
 import com.fish.user.model.User;
 
 /**
