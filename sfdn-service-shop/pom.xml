@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sfdn-service-product</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>sfdn-product-api</module>
-        <module>sfdn-product-model</module>
-        <module>sfdn-product-dao</module>
-        <module>sfdn-product-service</module>
-    </modules>
+    <artifactId>sfdn-service-shop</artifactId>
 
 
 </project>

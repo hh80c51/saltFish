@@ -18,6 +18,15 @@
         <module>sfdn-service-test</module>
         <module>sfdn-service-start</module>
         <module>sfdn-service-core</module>
+        <module>sfdn-service-shop</module>
+        <module>sfdn-shop-api</module>
+        <module>sfdn-shop-api</module>
+        <module>sfdn-service-shop/sfdn-shop-api</module>
+        <module>sfdn-service-shop/sfdn-shop-service</module>
+        <module>sfdn-service-shop/sfdn-shop-model</module>
+        <module>sfdn-service-shop/sfdn-shop-model</module>
+        <module>sfdn-service-shop/untitled</module>
+        <module>sfdn-service-shop/sfdn-shop-dao</module>
     </modules>
 
     <!-- 属性声明 -->

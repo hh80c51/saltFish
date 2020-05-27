@@ -3,20 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>saltFish</artifactId>
+        <artifactId>sfdn-service-product</artifactId>
         <groupId>com.fish</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sfdn-service-product</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>sfdn-product-api</module>
-        <module>sfdn-product-model</module>
-        <module>sfdn-product-dao</module>
-        <module>sfdn-product-service</module>
-    </modules>
+    <artifactId>sfdn-product-model</artifactId>
 
 
 </project>
