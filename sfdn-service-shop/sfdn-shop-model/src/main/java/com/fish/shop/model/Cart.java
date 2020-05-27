@@ -1,4 +1,4 @@
-package com.fish.user.model;
+package com.fish.shop.model;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
@@ -8,16 +8,19 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
-@TableName(value = "tbl_user")
-public class User implements Serializable {
+@TableName(value = "tbl_cart")
+public class Cart implements Serializable {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
-    @TableField(value = "name")
-    private String name;
-    private String tel;
-    private String password;
+    @TableField(value = "user_id")
+    private String userId;
+    private String num;
+    private BigDecimal price;
+    @TableField(value = "create_time")
     private String createTime;
+    @TableField(value = "modify_time")
     private String modifyTime;
 
     public Integer getId() {
@@ -28,24 +31,28 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getTel() {
-        return tel;
+    public String getNum() {
+        return num;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setNum(String num) {
+        this.num = num;
     }
 
-    public String getPassword() {
-        return password;
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public String getCreateTime() {
@@ -62,10 +69,6 @@ public class User implements Serializable {
 
     public void setModifyTime(String modifyTime) {
         this.modifyTime = modifyTime;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override

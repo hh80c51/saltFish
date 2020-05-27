@@ -48,7 +48,7 @@
 
     <!-- 2.配置mybatis 扫描mapper接口的路径 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.fish.user.dao,com.fish.shop.dao"/>
+        <property name="basePackage" value="com.fish.shop.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
     </bean>
 
@@ -60,7 +60,7 @@
         <!-- mybatis 全局配置文件 -->
         <property name="configLocation" value="classpath:spring/mybatis-config.xml"/>
         <!-- 别名处理 -->
-        <property name="typeAliasesPackage" value="com.fish.user.model,com.fish.shop.model"/>
+        <property name="typeAliasesPackage" value="com.fish.user.model"/>
         <!-- 注入全局MP策略配置 -->
         <property name="globalConfig" ref="globalConfiguration"/>
         <!-- 插件注册 -->

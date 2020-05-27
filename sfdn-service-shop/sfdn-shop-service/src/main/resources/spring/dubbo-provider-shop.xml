@@ -3,11 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <!-- 消费者关系启动时检查 check=false 解决循环依赖问题  -->
-    <dubbo:consumer check="false" timeout="500000" retries="0"/>
-
-<!-- provider's application name, used for tracing dependency relationship -->
-    <dubbo:application name="dubbo-provider-all" default="true"/>
+    <!-- provider's application name, used for tracing dependency relationship -->
+    <dubbo:application name="dubbo-provider-shop" default="true"/>
 
     <!-- use multicast registry center to export service -->
     <dubbo:registry address="zookeeper://127.0.0.1:2181" client="zkclient"/>
@@ -15,7 +12,8 @@
     <!-- use dubbo protocol to export service on port 20880 -->
     <dubbo:protocol name="dubbo" port="20890"/>
 
-    <dubbo:annotation package="com.fish.user.service" />
     <dubbo:annotation package="com.fish.shop.service" />
+
+    <!--<dubbo:monitor protocol="registry"/>-->
 
 </beans>

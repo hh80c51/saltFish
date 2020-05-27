@@ -14,6 +14,7 @@
 
 	<!-- 扫描包 -->
 	<context:component-scan base-package="com.fish.user"/>
+	<context:component-scan base-package="com.fish.shop"/>
 
 	<!--开启切面代理 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
