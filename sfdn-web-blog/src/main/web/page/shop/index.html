@@ -504,6 +504,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </div>
 
 <script type="text/javascript" src="${project_base_path}/js/collectionJs.js"></script>
+<script src="${project_base_path}/page/shop/controllerJs/index.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		indexController.showProducts();
+	});
+</script>
 <script src="${project_base_path}/page/shop/js/jquery-3.2.1.min.js"></script>
 <script src="${project_base_path}/page/shop/styles/bootstrap4/popper.js"></script>
 <script src="${project_base_path}/page/shop/styles/bootstrap4/bootstrap.min.js"></script>
@@ -517,11 +523,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="${project_base_path}/page/shop/plugins/easing/easing.js"></script>
 <script src="${project_base_path}/page/shop/plugins/parallax-js-master/parallax.min.js"></script>
 <script src="${project_base_path}/page/shop/js/custom.js"></script>
-<script src="${project_base_path}/page/shop/controllerJs/index.js"></script>
-<script type="text/javascript">
-	$(function () {
-		indexController.showProducts();
-	})
-</script>
 </body>
 </html>
