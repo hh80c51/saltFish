@@ -32,4 +32,13 @@ public class ProductController {
         result.setResMsg(productList);
         return result;
     }
+
+    @RequestMapping("getProductDetail")
+    @ResponseBody
+    public ResponseEntity getProductDetail(String id){
+        ResponseEntity result = ResponseEntity.SUCCESS;
+        Product product = productService.getProduct(Integer.valueOf(id));
+        result.setResMsg(product);
+        return result;
+    }
 }

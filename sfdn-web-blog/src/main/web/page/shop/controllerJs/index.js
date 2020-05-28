@@ -35,4 +35,13 @@ $(function () {
             }
         }, null, false);
     }
+
+    indexController.productDetail = function (id) {
+        ajaxUtil.post('/productController/getProductDetail.do', {"id": id}, function (data) {
+            if (data.resStatus == CONSTANTS.SUCCESS) {
+                containerUtil.add(id, data.resMsg);
+                commonUtil.jump("product.html?id="+id);
+            }
+        }, null, false);
+    }
 });
