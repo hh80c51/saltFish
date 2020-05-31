@@ -8,54 +8,56 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
-@TableName(value = "tbl_cart")
-public class Cart implements Serializable {
+@TableName(value = "tbl_cart_product")
+public class CartProduct implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id",type = IdType.AUTO)
-    private Integer id;
-    @TableField(value = "user_id")
-    private int userId;
-    private String num;
-    private BigDecimal price;
+    private int id;
+    @TableField(value = "cart_id")
+    private int cartId;
+    @TableField(value = "product_id")
+    private int productId;
+    @TableField(value = "product_num")
+    private int productNum;
     @TableField(value = "create_time")
     private Date createTime;
     @TableField(value = "modify_time")
     private Date modifyTime;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getCartId() {
+        return cartId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
     }
 
-    public String getNum() {
-        return num;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setNum(String num) {
-        this.num = num;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public int getProductNum() {
+        return productNum;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setProductNum(int productNum) {
+        this.productNum = productNum;
     }
 
     public Date getCreateTime() {
@@ -78,4 +80,5 @@ public class Cart implements Serializable {
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.DEFAULT_STYLE);
     }
+
 }

@@ -1,4 +1,4 @@
-package redission;
+package com.fish.core.utils;
 
 import org.redisson.Config;
 import org.redisson.Redisson;

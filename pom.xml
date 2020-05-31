@@ -302,6 +302,12 @@
             <artifactId>zkclient</artifactId>
             <version>0.1</version>
         </dependency>
+        <!-- redission -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>2.2.13</version>
+        </dependency>
     </dependencies>
 
     <!-- 执行mvn命令的时候，会提醒：Downloading: http://repo.maven.apache.org/maven2/ -->

@@ -22,10 +22,10 @@ $(function () {
                                 productArea += '<div class="product_extra product_sale"><a href="categories.html">Sale</a></div>';
                             }
                         productArea += '<div class="product_content">';
-                        productArea += '<div class="product_title"><a href="product.html">'+ product.name +'</a></div>';
+                        productArea += '<div class="product_title"><a onclick="indexController.productDetail('+product.id+')">'+ product.name +'</a></div>';
                         productArea += '<div class="product_price">$'+ product.price +'</div>';
                         productArea += '</div>';
-                        productArea += '</div>';;
+                        productArea += '</div>';
                     }
                 }
                 $(".product_grid").empty();
@@ -40,7 +40,7 @@ $(function () {
         ajaxUtil.post('/productController/getProductDetail.do', {"id": id}, function (data) {
             if (data.resStatus == CONSTANTS.SUCCESS) {
                 containerUtil.add(id, data.resMsg);
-                commonUtil.jump("product.html?id="+id);
+                commonUtil.jump("${project_base_path}/page/shop/product.html?id="+id);
             }
         }, null, false);
     }

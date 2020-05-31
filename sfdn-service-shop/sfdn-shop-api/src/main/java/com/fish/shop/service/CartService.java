@@ -13,5 +13,9 @@ public interface CartService {
      */
     Cart getCart(int id);
 
+    Cart getCartByUserId(int id);
+
+    void updateCart(Cart cart);
+
     ResponseEntity isExist(Cart cart);
 }
