@@ -14,7 +14,17 @@ public class CartProductServiceImpl implements CartProductService {
     private CartProductDao cartProductDao;
 
     @Override
-    public void insertCartProduct(CartProduct cartProduct) {
-        cartProductDao.insert(cartProduct);
+    public int insert(CartProduct cartProduct) {
+        return cartProductDao.insert(cartProduct);
+    }
+
+    @Override
+    public int update(CartProduct cartProduct) {
+        return cartProductDao.updateAllColumnById(cartProduct);
+    }
+
+    @Override
+    public CartProduct selectByCondition(CartProduct cartProduct) {
+        return null;
     }
 }

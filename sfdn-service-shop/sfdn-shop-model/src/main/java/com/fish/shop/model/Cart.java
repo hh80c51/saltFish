@@ -19,7 +19,7 @@ public class Cart implements Serializable {
     private Integer id;
     @TableField(value = "user_id")
     private int userId;
-    private String num;
+    private int num;
     private BigDecimal price;
     @TableField(value = "create_time")
     private Date createTime;
@@ -42,11 +42,11 @@ public class Cart implements Serializable {
         this.userId = userId;
     }
 
-    public String getNum() {
+    public int getNum() {
         return num;
     }
 
-    public void setNum(String num) {
+    public void setNum(int num) {
         this.num = num;
     }
 

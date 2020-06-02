@@ -6,6 +6,7 @@ import com.fish.core.model.ResponseEntity;
 import com.fish.core.utils.RedissionUtils;
 import com.fish.product.model.Product;
 import com.fish.product.service.ProductService;
+import com.fish.shop.facade.CartFacade;
 import com.fish.shop.model.Cart;
 import com.fish.shop.model.CartProduct;
 import com.fish.shop.service.CartProductService;
@@ -45,6 +46,8 @@ public class ProductController {
     @Reference
     private CartService cartService;
     @Reference
+    private CartFacade cartFacade;
+    @Reference
     private UserService userService;
 
     @RequestMapping("getIndexProductList")
@@ -83,16 +86,8 @@ public class ProductController {
         /**
          * 2.持久化
          */
-        Product product = productService.getProduct(Integer.valueOf(productId));
-        Cart cart = cartService.getCartByUserId(4);
-        CartProduct cartProduct = new CartProduct();
-        cartProduct.setCartId(cart.getId());
-        cartProduct.setProductId(Integer.valueOf(productId));
-        cartProduct.setProductNum(1);
-        cartProductService.insertCartProduct(cartProduct);
-        cart.setNum(cart.getNum() + 1);
-        cart.setPrice(cart.getPrice().add(product.getPrice()));
-        cartService.updateCart(cart);
+        cartFacade.addToCart(productId);
+
         return result;
     }
 }

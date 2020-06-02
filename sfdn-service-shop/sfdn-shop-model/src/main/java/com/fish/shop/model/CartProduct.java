@@ -23,6 +23,7 @@ public class CartProduct implements Serializable {
     private int productId;
     @TableField(value = "product_num")
     private int productNum;
+    private int state;
     @TableField(value = "create_time")
     private Date createTime;
     @TableField(value = "modify_time")
@@ -58,6 +59,14 @@ public class CartProduct implements Serializable {
 
     public void setProductNum(int productNum) {
         this.productNum = productNum;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     public Date getCreateTime() {

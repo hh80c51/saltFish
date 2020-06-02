@@ -25,4 +25,33 @@
 	<!-- 引入数据源的配置信息 -->
 	<import resource="classpath*:spring/spring-dao.xml"/>
 
+	<!-- 引入TCC事务  -->
+	<import resource="classpath:tcc-transaction-dubbo.xml" />
+	<import resource="classpath:tcc-transaction.xml" />
+
+	<!-- tcc-transaction框架使用transactionRepository持久化事务日志。
+	可以选择FileSystemTransactionRepository、SpringJdbcTransactionRepository、RedisTransactionRepository或ZooKeeperTransactionRepository。 -->
+	<bean id="transactionRepository" class="org.mengyun.tcctransaction.repository.RedisClusterTransactionRepository">
+		<property name="keyPrefix" value="TCC:IDE:"/>
+		<property name="jedisClusterExtend" ref="jedisClusterExtend"/>
+	</bean>
+
+	<bean id="jedisClusterExtend" class="org.mengyun.tcctransaction.repository.helper.JedisClusterExtend">
+		<constructor-arg index="0" value="10.112.12.203:7000,10.112.12.203:7001,10.112.12.203:7002" type="java.lang.String"/>
+		<constructor-arg index="1" ref="jedisPoolConfig"/>
+	</bean>
+
+	<!-- 配置JedisPoolConfig实例 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxIdle" value="${redis.pool.maxIdle}" />
+		<property name="maxTotal" value="${redis.pool.maxActive}" />
+		<property name="maxWaitMillis" value="${redis.pool.maxWait}" />
+		<property name="testOnBorrow" value="false" />
+	</bean>
+
+	<!-- 替换默认的TCC异常调度配置（可选） -->
+	<!-- <bean id="defaultRecoverConfig" class="org.mengyun.tcctransaction.spring.recover.DefaultRecoverConfig">
+        <property name="cronExpression" value="0 0 */1 * * ?"/>
+    </bean> -->
+
 </beans>

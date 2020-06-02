@@ -48,6 +48,7 @@
         <jackson.version>2.9.8</jackson.version>
         <powermock.version>1.6.5</powermock.version>
         <dubbo.version>2.5.5</dubbo.version>
+        <tcc.version>1.2.4.23</tcc.version>
     </properties>
 
     <dependencies>
@@ -307,6 +308,17 @@
             <groupId>org.redisson</groupId>
             <artifactId>redisson</artifactId>
             <version>2.2.13</version>
+        </dependency>
+        <!-- TCC -->
+        <dependency>
+            <groupId>org.mengyun</groupId>
+            <artifactId>tcc-transaction-spring</artifactId>
+            <version>${tcc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mengyun</groupId>
+            <artifactId>tcc-transaction-dubbo</artifactId>
+            <version>${tcc.version}</version>
         </dependency>
     </dependencies>
 
