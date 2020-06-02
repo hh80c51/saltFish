@@ -308,6 +308,17 @@
             <artifactId>redisson</artifactId>
             <version>2.2.13</version>
         </dependency>
+        <!-- tcc-transaction框架 -->
+        <dependency>
+            <groupId>org.mengyun</groupId>
+            <artifactId>tcc-transaction-spring</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mengyun</groupId>
+            <artifactId>tcc-transaction-dubbo</artifactId>
+            <version>1.2.5</version>
+        </dependency>
     </dependencies>
 
     <!-- 执行mvn命令的时候，会提醒：Downloading: http://repo.maven.apache.org/maven2/ -->

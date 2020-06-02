@@ -29,4 +29,28 @@
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
     </bean>
+
+    <!-- 引入TCC事务  -->
+    <import resource="classpath:tcc-transaction-dubbo.xml" />
+    <import resource="classpath:tcc-transaction.xml" />
+
+    <bean id="transactionRepository" class="org.mengyun.tcctransaction.repository.RedisClusterTransactionRepository">
+        <property name="keyPrefix" value="TCC:loan:"/>
+        <property name="jedisClusterExtend" ref="jedisClusterExtend"/>
+    </bean>
+
+
+    <bean id="jedisClusterExtend" class="org.mengyun.tcctransaction.repository.helper.JedisClusterExtend">
+        <constructor-arg index="0" value="${redis.cluster.ip}" type="java.lang.String"/>
+        <constructor-arg index="1" ref="jedisPoolConfig"/>
+    </bean>
+
+
+    <!-- 配置JedisPoolConfig实例 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.pool.maxIdle}" />
+        <property name="maxTotal" value="${redis.pool.maxActive}" />
+        <property name="maxWaitMillis" value="${redis.pool.maxWait}" />
+        <property name="testOnBorrow" value="false" />
+    </bean>
 </beans>

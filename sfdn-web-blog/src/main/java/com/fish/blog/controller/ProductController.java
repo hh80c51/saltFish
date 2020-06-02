@@ -4,13 +4,15 @@ import com.alibaba.druid.support.logging.LogFactory;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.fish.core.model.ResponseEntity;
 import com.fish.core.utils.RedissionUtils;
-import com.fish.product.model.Product;
-import com.fish.product.service.ProductService;
 import com.fish.shop.model.Cart;
 import com.fish.shop.model.CartProduct;
+import com.fish.shop.model.Product;
 import com.fish.shop.service.CartProductService;
 import com.fish.shop.service.CartService;
+import com.fish.shop.service.ProductService;
+import com.fish.user.model.User;
 import com.fish.user.service.UserService;
+import com.fish.user.util.BaseUtil;
 import org.redisson.Config;
 import org.redisson.RedissonClient;
 import org.redisson.SingleServerConfig;
@@ -51,24 +53,26 @@ public class ProductController {
     @ResponseBody
     public ResponseEntity getIndexProductList(Product product){
         ResponseEntity result = ResponseEntity.SUCCESS;
-        List<Product> productList = productService.getProductList(product);
+        List<Product> productList = productService.findListByCondition(product);
         result.setResMsg(productList);
         return result;
     }
 
     @RequestMapping("getProductDetail")
     @ResponseBody
-    public ResponseEntity getProductDetail(String id){
+    public ResponseEntity getProductDetail(Integer id){
         ResponseEntity result = ResponseEntity.SUCCESS;
-        Product product = productService.getProduct(Integer.valueOf(id));
+        Product product = productService.findById(id);
         result.setResMsg(product);
         return result;
     }
 
     @RequestMapping("addToCart")
     @ResponseBody
-    public ResponseEntity addToCart(String productId){
+    public ResponseEntity addToCart(Integer productId){
         ResponseEntity result = ResponseEntity.SUCCESS;
+
+        User loginUser = BaseUtil.getUser(() -> this.userService.findById(BaseUtil.getLoginUserId()));
 
         /**
          * 1.加入缓存
@@ -77,22 +81,24 @@ public class ProductController {
         RedissonClient redissonClient = RedissionUtils.getInstance().getRedissionClient();
 
         //获取指定的节点值
-        RList<String> rList = redissonClient.getList("cartProductIds");
+        RList<Integer> rList = redissonClient.getList("cartProductIds");
         rList.add(productId);
 
         /**
          * 2.持久化
          */
-        Product product = productService.getProduct(Integer.valueOf(productId));
-        Cart cart = cartService.getCartByUserId(4);
+        Product product = productService.findById(productId);
+        Cart cartCdt = new Cart();
+        cartCdt.setUserId(loginUser.getId());
+        Cart cart = cartService.findByCondition(cartCdt);
         CartProduct cartProduct = new CartProduct();
         cartProduct.setCartId(cart.getId());
         cartProduct.setProductId(Integer.valueOf(productId));
         cartProduct.setProductNum(1);
-        cartProductService.insertCartProduct(cartProduct);
+        cartProductService.insert(cartProduct);
         cart.setNum(cart.getNum() + 1);
         cart.setPrice(cart.getPrice().add(product.getPrice()));
-        cartService.updateCart(cart);
+        cartService.update(cart);
         return result;
     }
 }
