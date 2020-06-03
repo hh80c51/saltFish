@@ -320,6 +320,19 @@
 <!--            <artifactId>tcc-transaction-dubbo</artifactId>-->
 <!--            <version>${tcc.version}</version>-->
 <!--        </dependency>-->
+
+        <!-- 分布式事务-->
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-all</artifactId>
+            <version>0.9.0</version>
+        </dependency>
     </dependencies>
 
     <!-- 执行mvn命令的时候，会提醒：Downloading: http://repo.maven.apache.org/maven2/ -->

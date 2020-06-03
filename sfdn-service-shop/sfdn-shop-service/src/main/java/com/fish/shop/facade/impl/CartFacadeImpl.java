@@ -9,6 +9,7 @@ import com.fish.shop.model.Product;
 import com.fish.shop.service.CartProductService;
 import com.fish.shop.service.CartService;
 import com.fish.shop.service.ProductService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +30,7 @@ public class CartFacadeImpl implements CartFacade {
 
     @Override
 //    @Compensable(confirmMethod = "confirmAddToCart", cancelMethod = "cancelAddToCart", transactionContextEditor = DubboTransactionContextEditor.class)
+    @GlobalTransactional(rollbackFor = Exception.class)
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
     public void addToCart(Integer productId, Integer userId){
         Product product = productService.findById(productId);
