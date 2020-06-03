@@ -18,18 +18,6 @@
             <version>2.3.3</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.fish</groupId>
-            <artifactId>sfdn-product-model</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fish</groupId>
-            <artifactId>sfdn-product-model</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 
 </project>

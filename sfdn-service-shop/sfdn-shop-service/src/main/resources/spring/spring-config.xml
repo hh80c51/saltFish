@@ -30,7 +30,7 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <!-- 引入TCC事务  -->
+<!--    &lt;!&ndash; 引入TCC事务  &ndash;&gt;
     <import resource="classpath:tcc-transaction-dubbo.xml" />
     <import resource="classpath:tcc-transaction.xml" />
 
@@ -46,11 +46,11 @@
     </bean>
 
 
-    <!-- 配置JedisPoolConfig实例 -->
+    &lt;!&ndash; 配置JedisPoolConfig实例 &ndash;&gt;
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxIdle" value="${redis.pool.maxIdle}" />
         <property name="maxTotal" value="${redis.pool.maxActive}" />
         <property name="maxWaitMillis" value="${redis.pool.maxWait}" />
         <property name="testOnBorrow" value="false" />
-    </bean>
+    </bean>-->
 </beans>

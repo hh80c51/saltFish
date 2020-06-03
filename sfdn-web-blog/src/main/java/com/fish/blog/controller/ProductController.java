@@ -91,21 +91,8 @@ public class ProductController {
          * 2.持久化
          */
 
-        cartFacade.addToCart(productId);
+        cartFacade.addToCart(productId, loginUser.getId());
 
-
-        Product product = productService.findById(productId);
-        Cart cartCdt = new Cart();
-        cartCdt.setUserId(loginUser.getId());
-        Cart cart = cartService.findByCondition(cartCdt);
-        CartProduct cartProduct = new CartProduct();
-        cartProduct.setCartId(cart.getId());
-        cartProduct.setProductId(Integer.valueOf(productId));
-        cartProduct.setProductNum(1);
-        cartProductService.insert(cartProduct);
-        cart.setNum(cart.getNum() + 1);
-        cart.setPrice(cart.getPrice().add(product.getPrice()));
-        cartService.update(cart);
         return result;
     }
 }

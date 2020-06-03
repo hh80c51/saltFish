@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>sfdn-service-user</module>
-        <module>sfdn-service-product</module>
         <module>sfdn-service-log</module>
         <module>sfdn-service-sms</module>
         <module>sfdn-web-blog</module>
@@ -311,16 +310,16 @@
         </dependency>
 
         <!-- TCC -->
-        <dependency>
-            <groupId>org.mengyun</groupId>
-            <artifactId>tcc-transaction-spring</artifactId>
-            <version>${tcc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mengyun</groupId>
-            <artifactId>tcc-transaction-dubbo</artifactId>
-            <version>${tcc.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.mengyun</groupId>-->
+<!--            <artifactId>tcc-transaction-spring</artifactId>-->
+<!--            <version>${tcc.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.mengyun</groupId>-->
+<!--            <artifactId>tcc-transaction-dubbo</artifactId>-->
+<!--            <version>${tcc.version}</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <!-- 执行mvn命令的时候，会提醒：Downloading: http://repo.maven.apache.org/maven2/ -->

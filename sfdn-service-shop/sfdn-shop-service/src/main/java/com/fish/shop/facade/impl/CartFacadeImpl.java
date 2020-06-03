@@ -9,9 +9,6 @@ import com.fish.shop.model.Product;
 import com.fish.shop.service.CartProductService;
 import com.fish.shop.service.CartService;
 import com.fish.shop.service.ProductService;
-import org.mengyun.tcctransaction.api.Compensable;
-import org.mengyun.tcctransaction.context.MethodTransactionContextEditor;
-import org.mengyun.tcctransaction.dubbo.context.DubboTransactionContextEditor;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +28,7 @@ public class CartFacadeImpl implements CartFacade {
     private CartProductService cartProductService;
 
     @Override
-    @Compensable(confirmMethod = "confirmAddToCart", cancelMethod = "cancelAddToCart", transactionContextEditor = DubboTransactionContextEditor.class)
+//    @Compensable(confirmMethod = "confirmAddToCart", cancelMethod = "cancelAddToCart", transactionContextEditor = DubboTransactionContextEditor.class)
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
     public void addToCart(Integer productId, Integer userId){
         Product product = productService.findById(productId);

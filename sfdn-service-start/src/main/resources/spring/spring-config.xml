@@ -15,7 +15,6 @@
 	<!-- 扫描包 -->
 	<context:component-scan base-package="com.fish.user"/>
 	<context:component-scan base-package="com.fish.shop"/>
-	<context:component-scan base-package="com.fish.product"/>
 
 	<!--开启切面代理 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
@@ -25,12 +24,13 @@
 	<!-- 引入数据源的配置信息 -->
 	<import resource="classpath*:spring/spring-dao.xml"/>
 
-	<!-- 引入TCC事务  -->
+<!--
+	&lt;!&ndash; 引入TCC事务  &ndash;&gt;
 	<import resource="classpath:tcc-transaction-dubbo.xml" />
 	<import resource="classpath:tcc-transaction.xml" />
 
-	<!-- tcc-transaction框架使用transactionRepository持久化事务日志。
-	可以选择FileSystemTransactionRepository、SpringJdbcTransactionRepository、RedisTransactionRepository或ZooKeeperTransactionRepository。 -->
+	&lt;!&ndash; tcc-transaction框架使用transactionRepository持久化事务日志。
+	可以选择FileSystemTransactionRepository、SpringJdbcTransactionRepository、RedisTransactionRepository或ZooKeeperTransactionRepository。 &ndash;&gt;
 	<bean id="transactionRepository" class="org.mengyun.tcctransaction.repository.RedisClusterTransactionRepository">
 		<property name="keyPrefix" value="TCC:IDE:"/>
 		<property name="jedisClusterExtend" ref="jedisClusterExtend"/>
@@ -41,13 +41,14 @@
 		<constructor-arg index="1" ref="jedisPoolConfig"/>
 	</bean>
 
-	<!-- 配置JedisPoolConfig实例 -->
+	&lt;!&ndash; 配置JedisPoolConfig实例 &ndash;&gt;
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
 		<property name="maxIdle" value="${redis.pool.maxIdle}" />
 		<property name="maxTotal" value="${redis.pool.maxActive}" />
 		<property name="maxWaitMillis" value="${redis.pool.maxWait}" />
 		<property name="testOnBorrow" value="false" />
 	</bean>
+-->
 
 	<!-- 替换默认的TCC异常调度配置（可选） -->
 	<!-- <bean id="defaultRecoverConfig" class="org.mengyun.tcctransaction.spring.recover.DefaultRecoverConfig">

@@ -17,6 +17,5 @@
 
     <dubbo:annotation package="com.fish.user.service" />
     <dubbo:annotation package="com.fish.shop.service" />
-    <dubbo:annotation package="com.fish.product.service" />
 
 </beans>
