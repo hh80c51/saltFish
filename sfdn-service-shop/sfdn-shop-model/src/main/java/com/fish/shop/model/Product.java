@@ -1,4 +1,4 @@
-package com.fish.product.model;
+package com.fish.shop.model;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;

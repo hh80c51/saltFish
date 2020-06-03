@@ -9,9 +9,9 @@ import org.mengyun.tcctransaction.api.Compensable;
  */
 public interface CartFacade {
     @Compensable
-    void addToCart(String productId);
+    void addToCart(Integer productId, Integer userId);
 
-    void confirmAddToCart(String productId);
+    void confirmAddToCart(Integer productId, Integer userId);
 
-    void cancelAddToCart(String productId);
+    void cancelAddToCart(Integer productId, Integer userId);
 }
