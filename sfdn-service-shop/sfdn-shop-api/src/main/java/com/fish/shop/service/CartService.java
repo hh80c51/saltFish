@@ -12,5 +12,6 @@ public interface CartService {
     int update(Cart cart);
     Cart findById(Integer id);
     Cart findByCondition(Cart cart);
+    List<Cart> findByUserId(Integer userId);
     List<Cart> findListByCondition(Cart cart);
 }

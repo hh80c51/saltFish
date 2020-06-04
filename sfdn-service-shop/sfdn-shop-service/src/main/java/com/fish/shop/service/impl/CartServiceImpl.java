@@ -42,6 +42,14 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public List<Cart> findByUserId(Integer userId){
+        EntityWrapper entityWrapper = new EntityWrapper();
+        //条件查询
+        entityWrapper.eq("user_id", userId);
+        return cartDao.selectList(entityWrapper);
+    }
+
+    @Override
     public List<Cart> findListByCondition(Cart cart) {
         EntityWrapper entityWrapper = new EntityWrapper();
         entityWrapper.setEntity(cart);

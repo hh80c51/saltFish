@@ -30,21 +30,21 @@ public class CartFacadeImpl implements CartFacade {
 
     @Override
 //    @Compensable(confirmMethod = "confirmAddToCart", cancelMethod = "cancelAddToCart", transactionContextEditor = DubboTransactionContextEditor.class)
-    @GlobalTransactional(rollbackFor = Exception.class)
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+//    @GlobalTransactional(rollbackFor = Exception.class)
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
     public void addToCart(Integer productId, Integer userId){
         Product product = productService.findById(productId);
-        Cart cartCdt = new Cart();
-        cartCdt.setUserId(userId);
-        Cart cart = cartService.findByCondition(cartCdt);
+        Cart cart = cartService.findByUserId(userId).get(0);
         CartProduct cartProduct = new CartProduct();
         cartProduct.setCartId(cart.getId());
         cartProduct.setProductId(Integer.valueOf(productId));
         cartProduct.setProductNum(1);
-        cartProduct.setState(-1);
+        cartProduct.setState(1);
         cartProductService.insert(cartProduct);
-        Cart c = null;
-        c.setNum(111111);
+
+        Cart cartTest = null;
+        cartTest.setNum(100);
+
         cart.setNum(cart.getNum() + 1);
         cart.setPrice(cart.getPrice().add(product.getPrice()));
         cartService.update(cart);
