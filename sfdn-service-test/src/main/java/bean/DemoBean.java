@@ -14,4 +14,8 @@ public class DemoBean implements Serializable {
     public void setSn(int sn) {
         this.sn = sn;
     }
+
+    public int getSn() {
+        return sn;
+    }
 }
