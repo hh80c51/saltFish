@@ -3,7 +3,7 @@ package jvm;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HeapMemory {
+public class HeapMemoryMonitor {
     public static void main(String[] args) throws InterruptedException {
         //堆占用变化情况
 //        heapChange();

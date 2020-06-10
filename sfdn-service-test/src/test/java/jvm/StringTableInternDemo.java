@@ -4,7 +4,7 @@ package jvm;
  * 串池
  */
 //StringTable [ "a", "b", "ab" ]    hashtable结构，不能扩容
-public class StringTable {
+public class StringTableInternDemo {
     public static void main(String[] args) {
 //        stringTable();
         intern();

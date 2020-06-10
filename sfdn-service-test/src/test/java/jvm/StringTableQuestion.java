@@ -1,6 +1,6 @@
 package jvm;
 
-public class Question {
+public class StringTableQuestion {
     public static void main(String[] args) {
         String s1 = "a";
         String s2 = "b";
