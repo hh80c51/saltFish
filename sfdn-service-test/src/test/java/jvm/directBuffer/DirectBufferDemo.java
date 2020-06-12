@@ -1,4 +1,4 @@
-package jvm;
+package jvm.directBuffer;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
+/**
+ * 演示直接内存和java缓冲区两种读取方式的效率对比
+ */
 public class DirectBufferDemo {
     static final String FROM = "F:\\影音\\TtsL95Pn.mp4";
     static final String TO = "E:\\a.mp4";

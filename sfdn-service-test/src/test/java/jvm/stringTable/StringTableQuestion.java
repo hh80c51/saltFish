@@ -1,4 +1,4 @@
-package jvm;
+package jvm.stringTable;
 
 public class StringTableQuestion {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package jvm;
+package jvm.stringTable;
 
 import java.io.*;
 import java.util.ArrayList;

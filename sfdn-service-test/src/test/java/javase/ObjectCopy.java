@@ -1,4 +1,4 @@
-package jvm;
+package javase;
 
 import bean.DemoBean;
 import org.apache.commons.lang3.SerializationUtils;
