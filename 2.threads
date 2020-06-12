@@ -1,0 +1,61 @@
+Thread 0xc2400f80
+
+  locals:
+
+Thread 0xc24010f8
+
+  locals:
+
+Thread 0xc2408848
+
+  locals:
+
+Thread 0xc24089c0
+
+  locals:
+
+Thread 0xc2408b38
+
+  locals:
+
+Thread 0xc2408cb0
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.ref.ReferenceQueue.remove(J)Ljava/lang/ref/Reference; (ReferenceQueue.java:143)
+  at java.lang.ref.ReferenceQueue.remove()Ljava/lang/ref/Reference; (ReferenceQueue.java:164)
+  at java.lang.ref.Finalizer$FinalizerThread.run()V (Finalizer.java:209)
+
+  locals:
+    objectId=0xc2401280, line=1
+    objectId=0xc2401270, line=1
+    objectId=0xc2401280, line=2
+    objectId=0xc2408cb0, line=3
+    objectId=0xc24012a0, line=3
+
+Thread 0xc2408e30
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.Object.wait()V (Object.java:502)
+  at java.lang.ref.Reference.tryHandlePending(Z)Z (Reference.java:191)
+  at java.lang.ref.Reference$ReferenceHandler.run()V (Reference.java:153)
+
+  locals:
+    objectId=0xc2410508, line=1
+    objectId=0xc2410508, line=2
+    objectId=0xc2408e30, line=3
+
+Thread 0xc2408fa8
+  at java.io.FileInputStream.readBytes([BII)I (Native Method)
+  at java.io.FileInputStream.read([BII)I (FileInputStream.java:255)
+  at java.io.BufferedInputStream.fill()V (BufferedInputStream.java:246)
+  at java.io.BufferedInputStream.read()I (BufferedInputStream.java:265)
+  at jvm.gc.GC_findGarbage.main([Ljava/lang/String;)V (GC_findGarbage.java:24)
+
+  locals:
+    objectId=0xc2409300, line=0
+    objectId=0xc2409300, line=0
+    objectId=0xc2409328, line=1
+    objectId=0xc2409348, line=1
+    objectId=0xc240b358, line=2
+    objectId=0xc2409348, line=2
+    objectId=0xc240b358, line=3
+    objectId=0xc240b380, line=4
+
