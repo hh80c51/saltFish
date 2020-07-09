@@ -30,16 +30,6 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <tx:annotation-driven mode="aspectj" />
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
-    <bean class="org.springframework.transaction.aspectj.AnnotationTransactionAspect"
-        factory-method="aspectOf">
-        <property name="transactionManager" ref="transactionManager" />
-    </bean>
-
 <!--    &lt;!&ndash; 引入TCC事务  &ndash;&gt;
     <import resource="classpath:tcc-transaction-dubbo.xml" />
     <import resource="classpath:tcc-transaction.xml" />

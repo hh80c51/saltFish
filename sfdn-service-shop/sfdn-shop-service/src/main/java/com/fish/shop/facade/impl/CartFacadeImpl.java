@@ -10,11 +10,16 @@ import com.fish.shop.service.CartProductService;
 import com.fish.shop.service.CartService;
 import com.fish.shop.service.ProductService;
 import io.seata.spring.annotation.GlobalTransactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AdviceMode;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
+
+import java.math.BigDecimal;
 
 /**
  * @author hh
@@ -22,37 +27,50 @@ import org.springframework.transaction.annotation.Transactional;
  * @date 2020/6/2  10:49
  */
 @Service
-@EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 public class CartFacadeImpl implements CartFacade {
 
     @Reference
     private ProductService productService;
-    @Reference
+    @Autowired
     private CartService cartService;
     @Reference
     private CartProductService cartProductService;
 
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor=NullPointerException.class)
     @Override
 //    @Compensable(confirmMethod = "confirmAddToCart", cancelMethod = "cancelAddToCart", transactionContextEditor = DubboTransactionContextEditor.class)
 //    @GlobalTransactional(rollbackFor = Exception.class)
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
     public void addToCart(Integer productId, Integer userId){
-        System.out.println(AnnotatedElementUtils.class);
-        Product product = productService.findById(productId);
-        Cart cart = cartService.findByUserId(userId).get(0);
-        CartProduct cartProduct = new CartProduct();
-        cartProduct.setCartId(cart.getId());
-        cartProduct.setProductId(Integer.valueOf(productId));
-        cartProduct.setProductNum(1);
-        cartProduct.setState(1);
-        cartProductService.insert(cartProduct);
+        Object savePoint = TransactionAspectSupport.currentTransactionStatus().createSavepoint();
+        try {
+            Product product = productService.findById(productId);
+            Cart cart = cartService.findByUserId(userId).get(0);
+            //通过new Bean() 的构造方法的方式构造的,并没有托管个spring 所以 该类无法执行事务
+//            CartProduct cartProduct = new CartProduct();
+//            cartProduct.setCartId(cart.getId());
+//            cartProduct.setProductId(Integer.valueOf(productId));
+//            cartProduct.setProductNum(1);
+//            cartProduct.setState(1);
+//            cartProductService.insert(cartProduct);
+//
+//            cart.setNum(cart.getNum() + 1);
+//            cart.setPrice(cart.getPrice().add(product.getPrice()));
+//            cartService.update(cart);
 
-        Cart cartTest = null;
-        cartTest.setNum(100);
+            cart.setUserId(4);
+            cart.setPrice(new BigDecimal(100));
+            cart.setNum(2);
+            cartService.insert(cart);
 
-        cart.setNum(cart.getNum() + 1);
-        cart.setPrice(cart.getPrice().add(product.getPrice()));
-        cartService.update(cart);
+            Cart cartTest = null;
+            cartTest.setNum(100);
+        } catch (Exception e) {
+            e.printStackTrace();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            TransactionAspectSupport.currentTransactionStatus().rollbackToSavepoint(savePoint);
+        }
+
+
     }
 
     @Override
