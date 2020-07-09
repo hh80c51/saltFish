@@ -23,12 +23,7 @@
     <!-- 属性声明 -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-context.version>5.2.6.RELEASE</spring-context.version>
-        <spring-web.version>5.2.6.RELEASE</spring-web.version>
-        <spring-orm.version>5.2.6.RELEASE</spring-orm.version>
-        <spring-webmvc.version>5.2.6.RELEASE</spring-webmvc.version>
-        <spring-test.version>5.2.6.RELEASE</spring-test.version>
-        <spring-context-support.version>5.2.6.RELEASE</spring-context-support.version>
+        <spring-version>5.2.6.RELEASE</spring-version>
         <java.servlet-api.version>4.0.1</java.servlet-api.version>
         <commons-io.version>2.6</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
@@ -55,33 +50,44 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring-context.version}</version>
+            <version>${spring-version}</version>
+        </dependency>
+        <!-- 用aspectJ处理spring的注解式事务 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>${spring-context-support.version}</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring-test.version}</version>
+            <version>${spring-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${spring-web.version}</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${spring-webmvc.version}</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${spring-orm.version}</version>
+            <version>${spring-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -154,7 +160,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jms</artifactId>
-            <version>4.2.4.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <!--ActiveMQ-->
         <dependency>
@@ -333,6 +339,7 @@
             <artifactId>seata-all</artifactId>
             <version>0.9.0</version>
         </dependency>
+
     </dependencies>
 
     <!-- 执行mvn命令的时候，会提醒：Downloading: http://repo.maven.apache.org/maven2/ -->
@@ -349,5 +356,35 @@
             <url>https://maven.aliyun.com/repository/public</url>
         </pluginRepository>
     </pluginRepositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.9</version>
+                <configuration>
+                    <complianceLevel>1.8</complianceLevel>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <showWeaveInfo>true</showWeaveInfo>
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>org.springframework</groupId>
+                            <artifactId>spring-aspects</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

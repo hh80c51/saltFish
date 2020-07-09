@@ -10,6 +10,9 @@ import com.fish.shop.service.CartProductService;
 import com.fish.shop.service.CartService;
 import com.fish.shop.service.ProductService;
 import io.seata.spring.annotation.GlobalTransactional;
+import org.springframework.context.annotation.AdviceMode;
+import org.springframework.core.annotation.AnnotatedElementUtils;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @date 2020/6/2  10:49
  */
 @Service
+@EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
 public class CartFacadeImpl implements CartFacade {
 
     @Reference
@@ -33,6 +37,7 @@ public class CartFacadeImpl implements CartFacade {
 //    @GlobalTransactional(rollbackFor = Exception.class)
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
     public void addToCart(Integer productId, Integer userId){
+        System.out.println(AnnotatedElementUtils.class);
         Product product = productService.findById(productId);
         Cart cart = cartService.findByUserId(userId).get(0);
         CartProduct cartProduct = new CartProduct();
