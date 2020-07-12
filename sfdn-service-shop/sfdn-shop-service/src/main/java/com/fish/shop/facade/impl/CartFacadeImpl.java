@@ -31,43 +31,42 @@ public class CartFacadeImpl implements CartFacade {
 
     @Reference
     private ProductService productService;
-    @Autowired
+    @Reference
     private CartService cartService;
     @Reference
     private CartProductService cartProductService;
 
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor=NullPointerException.class)
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
     @Override
 //    @Compensable(confirmMethod = "confirmAddToCart", cancelMethod = "cancelAddToCart", transactionContextEditor = DubboTransactionContextEditor.class)
 //    @GlobalTransactional(rollbackFor = Exception.class)
     public void addToCart(Integer productId, Integer userId){
-        Object savePoint = TransactionAspectSupport.currentTransactionStatus().createSavepoint();
         try {
             Product product = productService.findById(productId);
             Cart cart = cartService.findByUserId(userId).get(0);
-            //通过new Bean() 的构造方法的方式构造的,并没有托管个spring 所以 该类无法执行事务
-//            CartProduct cartProduct = new CartProduct();
-//            cartProduct.setCartId(cart.getId());
-//            cartProduct.setProductId(Integer.valueOf(productId));
-//            cartProduct.setProductNum(1);
-//            cartProduct.setState(1);
-//            cartProductService.insert(cartProduct);
-//
-//            cart.setNum(cart.getNum() + 1);
-//            cart.setPrice(cart.getPrice().add(product.getPrice()));
-//            cartService.update(cart);
 
-            cart.setUserId(4);
-            cart.setPrice(new BigDecimal(100));
-            cart.setNum(2);
-            cartService.insert(cart);
+            //新增一条购物车和商品关系
+            CartProduct cartProduct = new CartProduct();
+            cartProduct.setCartId(cart.getId());
+            cartProduct.setProductId(Integer.valueOf(productId));
+            CartProduct cartProductStock = cartProductService.findByCondition(cartProduct);
+            //购物车有相同的商品，数量更新
+            if(cartProductStock != null){
+                cartProduct.setProductNum(cartProductStock.getProductNum() + 1);
+                cartProduct.setState(1);
+                cartProductService.update(cartProduct);
+            }else{
+                cartProductService.insert(cartProduct);
+            }
 
-            Cart cartTest = null;
-            cartTest.setNum(100);
+            //购物车更新数量和金额
+            cart.setNum(cart.getNum() + 1);
+            cart.setPrice(cart.getPrice().add(product.getPrice()));
+            cartService.update(cart);
+
         } catch (Exception e) {
             e.printStackTrace();
-            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-            TransactionAspectSupport.currentTransactionStatus().rollbackToSavepoint(savePoint);
+            throw new RuntimeException("加入购物车出现异常！");
         }
 
 
