@@ -333,7 +333,7 @@ var commonUtil = {};
 	 */
 	commonUtil.keySubmit = function (submitId) {
 		$("body").keydown(function (event) {
-			if (event.keyCode === "13") {//keyCode=13是回车键
+			if (event.keyCode === 13) {//keyCode=13是回车键
 				$("#" + submitId).click();
 			}
 		});
