@@ -3,6 +3,7 @@ package jvm.directBuffer;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -13,10 +14,14 @@ public class DirectBufferDemo {
     static final String FROM = "F:\\影音\\TtsL95Pn.mp4";
     static final String TO = "E:\\a.mp4";
     static final int _1Mb = 1024 * 1024;
+    public static final int LIMIT_DAYLIMIT_TONGLIAN = 10000000;
 
     public static void main(String[] args) {
-        io();
-        directBuffer();
+        BigDecimal transMoneySum = new BigDecimal(9020000);
+        BigDecimal toAuditSum = new BigDecimal(980000);
+        boolean result = transMoneySum.add(toAuditSum).compareTo(new BigDecimal(LIMIT_DAYLIMIT_TONGLIAN)) > 0;
+        System.out.println(transMoneySum.add(toAuditSum).compareTo(new BigDecimal(LIMIT_DAYLIMIT_TONGLIAN)));
+        System.out.println(result);
     }
 
     private static void directBuffer(){
