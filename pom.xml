@@ -25,7 +25,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-version>5.2.6.RELEASE</spring-version>
         <java.servlet-api.version>4.0.1</java.servlet-api.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-codec.version>1.8</commons-codec.version>
         <jasypt.version>1.9.0</jasypt.version>
