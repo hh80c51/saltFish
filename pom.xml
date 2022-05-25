@@ -23,7 +23,7 @@
     <!-- 属性声明 -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-version>5.2.6.RELEASE</spring-version>
+        <spring-version>5.2.22.RELEASE</spring-version>
         <java.servlet-api.version>4.0.1</java.servlet-api.version>
         <commons-io.version>2.6</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
