@@ -41,7 +41,7 @@
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
         <jackson.version>2.9.8</jackson.version>
         <powermock.version>1.6.5</powermock.version>
-        <dubbo.version>2.5.5</dubbo.version>
+        <dubbo.version>2.6.12</dubbo.version>
         <tcc.version>1.2.4.23</tcc.version>
     </properties>
 
